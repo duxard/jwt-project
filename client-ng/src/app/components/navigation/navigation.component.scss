@@ -1,0 +1,66 @@
+@import '../../../styles/utils';
+@import '../../../styles/variables';
+
+:host {
+  box-sizing: border-box;
+  display: block;
+
+  nav {
+    background-color: $header-bg;
+    padding: 0 10px;
+
+    .navbar {
+      width: 100%;
+      height: toRem(60);
+      display: flex;
+      align-items: center;
+
+      .navbar-logo {
+        color: $nav-font-color;
+        margin-right: toRem(12);
+      }
+
+      .navbar-section {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+        }
+
+        li {
+          cursor: pointer;
+          margin-right: toRem(12);
+
+          a {
+            color: $nav-font-color;
+            text-decoration: none;
+            transition: color .4s, border-color .4s;
+
+            &:hover {
+              color: $nav-font-color-hover;
+            }
+          }
+        }
+
+        .navbar-section-menu { }
+
+        .navbar-section-auth {
+          li:last-child > a {
+            padding: toRem(7);
+            border: 1px solid $nav-font-color;
+            border-radius: 5px;
+
+            &:hover {
+              border-color: $nav-font-color-hover;
+            }
+          }
+        }
+      }
+    }
+  }
+}
