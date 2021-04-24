@@ -62,5 +62,30 @@
         }
       }
     }
+
+    .navbar-burger {
+      display: none;
+      cursor: pointer;
+      padding: toRem(3) toRem(10);
+      border: 1px solid $nav-font-color;
+      border-radius: 5px;
+      div {
+        width: toRem(35);
+        height: toRem(4);
+        background-color: $nav-font-color;
+        margin: 6px 0;
+      }
+    }
   }
+
+  @media screen and (max-width: 576px) {
+    .navbar-burger {
+      display: block;
+    }
+    .navbar-section {
+      display: none;
+    }
+  }
+
 }
+
