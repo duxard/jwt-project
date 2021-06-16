@@ -1,0 +1,11 @@
+<div *ngIf="loading">
+  <p>Loading...</p>
+</div>
+
+<div *ngIf="showError">
+  <p>Something went wrong -check out console output.</p>
+</div>
+
+<ul>
+  <li *ngFor="let todo of todos">{{todo.item}}</li>
+</ul>

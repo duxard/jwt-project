@@ -4,16 +4,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IconsModule } from './components/icons-library/icons.module';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { TodosComponent } from './components/todos/todos.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent
+    NavigationComponent,
+    TodosComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    IconsModule
+    IconsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
