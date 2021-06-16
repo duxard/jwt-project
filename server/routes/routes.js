@@ -20,4 +20,20 @@ router.get('/api', (req, res) => {
   });
 });
 
+// localhost:8000/api/test/a=1&b=2&c=3 ... --> query string
+router.get('/api/test', (req, res) => {
+  console.log(req.query);
+  res.json({
+    message: 'API root...'
+  });
+});
+
+// localhost:8000/api/test/1 --> parameter (id)
+router.get('/api/test/:id', (req, res) => {
+  console.log(req.params.id);
+  res.json({
+    message: 'API root...'
+  });
+});
+
 module.exports = router;

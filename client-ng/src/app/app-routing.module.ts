@@ -19,5 +19,6 @@ export class AppRoutingModule { }
 
 export const routingComponents = [
   HomeComponent,
+  TodosComponent,
   PageNotFoundComponent
 ];
