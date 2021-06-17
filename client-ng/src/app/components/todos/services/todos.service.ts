@@ -5,6 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry, timeout } from 'rxjs/operators';
 import { APP_CONFIG } from '../../../constants/appconfig';
 import { API_TODO_LIST } from '../../../constants/api';
+import { Appconfig } from '../../../models/Appconfig';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class TodosService {
   };
 
   constructor(
-    @Inject(APP_CONFIG) private appConfig: any, // @todo: Appconfig interface?..
+    @Inject(APP_CONFIG) private appConfig: Appconfig,
     private http: HttpClient
   ) { }
 
