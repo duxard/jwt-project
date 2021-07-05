@@ -8,6 +8,7 @@ import { TodosComponent } from './components/todos/todos.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { PlaygroundComponent } from './components/playground/playground.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     TodosComponent,
     HomeComponent,
     PageNotFoundComponent,
-    routingComponents
+    routingComponents,
+    PlaygroundComponent
   ],
   imports: [
     BrowserModule,
