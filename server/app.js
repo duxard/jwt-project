@@ -1,16 +1,17 @@
 const express = require('express');
 const cors = require('cors');
-const port = 8000;
+const port = process.env.PORT || 8000;
 const host = "127.0.0.1";
 const app = express();
 const mongoose = require('mongoose');
-const routes = require('./routes/routes');
+const api = require('./routes/api');
+const bodyParser = require('body-parser');
 
-app.use(cors());
+require('dotenv').config();
 
-//Connect to mongodb
+// @todo: substitute by the service
 mongoose.connect(
-  `mongodb+srv://duxard23:duxard23@cluster0-wgddl.mongodb.net/test?retryWrites=true`,
+  `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@${process.env.MONGODB_CLUSTER}/test?retryWrites=true`,
   { useNewUrlParser: true, useUnifiedTopology: true })
   .then(data => console.log(`MongoDB: connected successfully`))
   .catch(err => {
@@ -18,7 +19,9 @@ mongoose.connect(
     console.error( err );
   });
 
-app.use(routes);
+app.use(cors());
+app.use(bodyParser.json());
+app.use(api);
 
 app.listen(port, host, () => {
   console.log(`Server is running at ${host}:${port}`);

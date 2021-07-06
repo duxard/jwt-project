@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { PlaygroundComponent } from './components/playground/playground.component';
+import { PrivateComponent } from './components/private/private.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PlaygroundComponent } from './components/playground/playground.componen
     HomeComponent,
     PageNotFoundComponent,
     routingComponents,
-    PlaygroundComponent
+    PlaygroundComponent,
+    PrivateComponent
   ],
   imports: [
     BrowserModule,

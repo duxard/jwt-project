@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const User =  require('../schemas/User.js');
 
 router.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -9,31 +10,97 @@ router.use(function(req, res, next) {
   res.header("Access-Control-Allow-Credentials","true");
   next();
 });
+// TODO: finish up
+router.post('/register', (req, res) => {
+  const newUser = req.body;
+  User.findOne({email: newUser.email}, (err, user) => {
+    if(err) {
+      throw new Error(err);
+    } else {
+      if(!user) {
+        User(newUser).save((err, registeredUser) => {
+          if(err) {
+            throw new Error(err);
+          } else {
+            res.status(200).send(registeredUser);
+          }
 
-router.get('/', (req, res, next) => {
-  res.send("Home page...");
+          // let payload = { subject: registeredUser._id };
+          // // second argument can be anything. Le it be
+          // // a string in our case
+          // let token = jwt.sign(payload, 'secretKey');
+          // res.status(200).send({ token });
+        });
+      } else {
+        res.status(400).send('The email already exists');
+      }
+    }
+  });
 });
-
-router.get('/api', (req, res) => {
-  res.json({
-    message: 'API root...'
+// TODO: finish up
+router.post('/login', (req, res) => {
+  const userData = req.body;
+  User.findOne({email: userData.email}, (err, user) => {
+    if(err) {
+      throw new Error(err);
+    } else {
+      if(!user) {
+        res.status(401).send('Invalid email. It looks like the user is not registered');
+      } else if(user.password !== userData.password) {
+        res.status(401).send('Invalid password');
+      } else {
+        res.status(200).send(user);
+        // let payload = { subject: user._id };
+        // // second argument can be anything. Le it be
+        // // a string in our case
+        // let token = jwt.sign(payload, 'secretKey');
+        // res.status(200).send({ token });
+      }
+    }
   });
 });
 
-// localhost:8000/api/test/a=1&b=2&c=3 ... --> query string
-router.get('/api/test', (req, res) => {
-  console.log(req.query);
-  res.json({
-    message: 'API root...'
-  });
-});
-
-// localhost:8000/api/test/1 --> parameter (id)
-router.get('/api/test/:id', (req, res) => {
-  console.log(req.params.id);
-  res.json({
-    message: 'API root...'
-  });
+// TODO: move it to real collection in future
+router.get('/special', (req, res) => {
+  let specialEvents = [
+    {
+      "_id": "1",
+      "name": "Auto Expo Special",
+      "description": "lorem ipsum",
+      "date": "2012-04-23T18:25:43.511Z"
+    },
+    {
+      "_id": "2",
+      "name": "Auto Expo Special",
+      "description": "lorem ipsum",
+      "date": "2012-04-23T18:25:43.511Z"
+    },
+    {
+      "_id": "3",
+      "name": "Auto Expo Special",
+      "description": "lorem ipsum",
+      "date": "2012-04-23T18:25:43.511Z"
+    },
+    {
+      "_id": "4",
+      "name": "Auto Expo Special",
+      "description": "lorem ipsum",
+      "date": "2012-04-23T18:25:43.511Z"
+    },
+    {
+      "_id": "5",
+      "name": "Auto Expo Special",
+      "description": "lorem ipsum",
+      "date": "2012-04-23T18:25:43.511Z"
+    },
+    {
+      "_id": "6",
+      "name": "Auto Expo Special",
+      "description": "lorem ipsum",
+      "date": "2012-04-23T18:25:43.511Z"
+    }
+  ];
+  res.json(specialEvents)
 });
 
 module.exports = router;
