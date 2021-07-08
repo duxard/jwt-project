@@ -76,16 +76,17 @@
         margin: 6px 0;
       }
     }
-  }
 
-  @media screen and (max-width: 576px) {
-    .navbar-burger {
-      display: block;
-    }
-    .navbar-section {
-      display: none;
+    @media screen and (max-width: 576px) {
+      .navbar-burger {
+        display: block;
+      }
+      .navbar-section {
+        display: none !important;
+      }
     }
   }
 
 }
+
 

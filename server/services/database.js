@@ -1,13 +1,19 @@
-// @todo: finish up
 const mongoose = require('mongoose');
 
 function getMongoConnectionUrl(config) {
-  return ``;
+  return `mongodb+srv://${config.user}:${config.pass}@${config.cluster}/test?retryWrites=true`;
 }
 
 module.exports = {
   connect: DB_CONFIG => {
-    mongoose.connect(getMongoConnectionUrl(DB_CONFIG));
+
+    mongoose.connect(
+      getMongoConnectionUrl(DB_CONFIG),
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+      }
+    );
 
     const connection = mongoose.connection;
 
