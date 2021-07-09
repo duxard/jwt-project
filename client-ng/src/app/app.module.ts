@@ -10,6 +10,9 @@ import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { PlaygroundComponent } from './components/playground/playground.component';
 import { PrivateComponent } from './components/private/private.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { LoginComponent } from './components/login/login.component';
+import { TestNavComponent } from './components/test-nav/test-nav.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { PrivateComponent } from './components/private/private.component';
     PageNotFoundComponent,
     routingComponents,
     PlaygroundComponent,
-    PrivateComponent
+    PrivateComponent,
+    RegistrationComponent,
+    LoginComponent,
+    TestNavComponent
   ],
   imports: [
     BrowserModule,

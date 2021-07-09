@@ -45,6 +45,12 @@
               color: $nav-font-color-hover;
             }
           }
+
+          &.active {
+            a {
+              color: red;
+            }
+          }
         }
 
         .navbar-section-menu { }
@@ -73,13 +79,17 @@
         width: toRem(35);
         height: toRem(4);
         background-color: $nav-font-color;
-        margin: 6px 0;
       }
     }
 
     @media screen and (max-width: 576px) {
       .navbar-burger {
-        display: block;
+        display: flex;
+        margin-left: auto;
+        flex-direction: column;
+        div {
+          margin: 4px 0;
+        }
       }
       .navbar-section {
         display: none !important;

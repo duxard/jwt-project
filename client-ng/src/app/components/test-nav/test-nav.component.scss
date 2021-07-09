@@ -1,0 +1,116 @@
+@import '../../../styles/utils';
+@import '../../../styles/variables';
+//@todo: to be refactored
+:host {
+  .navbar {
+    background-color: $header-bg;
+    padding: 0 10px;
+
+    .navbar-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .navbar-section-left {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .navbar-burger {
+      border: 1px solid $nav-font-color;
+      width: 40px;
+      height: 40px;
+      font-size: 2rem;
+      color: $nav-font-color;
+      background-color: transparent;
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .navbar-section-menu {
+      display: flex;
+      padding: 0;
+    }
+
+    .navbar-section-auth {
+      display: flex;
+      margin-left: auto;
+
+      li:last-child > a {
+        padding: toRem(7);
+        border: 1px solid $nav-font-color;
+        border-radius: 5px;
+
+        &:hover {
+          border-color: $nav-font-color-hover;
+        }
+      }
+    }
+
+    ul {
+      list-style-type: none;
+
+      li {
+        cursor: pointer;
+        margin-right: toRem(12);
+
+        a {
+          color: $nav-font-color;
+          text-decoration: none;
+          transition: color .4s, border-color .4s;
+
+          &:hover {
+            color: $nav-font-color-hover;
+          }
+        }
+
+        &.active {
+          a {
+            color: red;
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 576px) {
+      .navbar-section {
+        display: block;
+      }
+      .navbar-section-left {
+        display:block;
+      }
+      .navbar-section-menu {
+        display: block;
+        padding: 0;
+        text-align: center;
+        margin-bottom: 0;
+      }
+      .navbar-section-auth {
+        margin-top: 0;
+        display: block;
+        padding: 0;
+        text-align: center;
+
+        li:last-child > a {
+          padding: toRem(7);
+          border: none;
+          &:hover {
+            border-color: $nav-font-color-hover;
+          }
+        }
+      }
+
+      ul {
+        li {
+          height: 2rem;
+          margin-right: 0;
+        }
+      }
+
+    }
+  }
+}
