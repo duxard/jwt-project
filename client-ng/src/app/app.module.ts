@@ -13,6 +13,7 @@ import { PrivateComponent } from './components/private/private.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
 import { TestNavComponent } from './components/test-nav/test-nav.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { TestNavComponent } from './components/test-nav/test-nav.component';
     BrowserModule,
     AppRoutingModule,
     IconsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,9 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { API_SPECIALS_LIST } from '../../../constants/api';
 import { catchError, retry, timeout } from 'rxjs/operators';
 import { SpecialEvents } from './SpecialEvents';
+import { APP_CONFIG } from '../../../constants/appconfig';
+import { Appconfig } from '../../../models/Appconfig';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +18,13 @@ export class SpecialEventsService {
     })
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    @Inject(APP_CONFIG) private appConfig: Appconfig,
+    private http: HttpClient
+  ) { }
 
   fetchSpecialEvent(): Observable<SpecialEvents[]> {
-    return this.http.get<SpecialEvents[]>(`http://localhost:8000${API_SPECIALS_LIST}`, this.httpOptions)
+    return this.http.get<SpecialEvents[]>(`${this.appConfig.localHost}${API_SPECIALS_LIST}`, this.httpOptions)
       .pipe(
         timeout(5000),
         retry(1),

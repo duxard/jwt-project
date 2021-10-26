@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  serverHost: 'https://asta-web-1.herokuapp.com'
+  serverHost: 'https://asta-web-1.herokuapp.com',
+  localHost: 'http://localhost:8000'
 };
 
 /*

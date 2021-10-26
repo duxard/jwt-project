@@ -1,31 +1,17 @@
-<!--<div class="container">-->
-<!--  <form [formGroup]="addCommentForm" (ngSubmit)="submitForm()" novalidate>-->
+<div class="container">
+  <form [formGroup]="registrationForm" (ngSubmit)="submitForm()">
 
-<!--    <div class="form-group">-->
-<!--      <div class="col-sm-12">-->
-<!--        <label for="username" class="control-label required">Username</label>-->
-<!--        <input type="text"-->
-<!--               formControlName="username"-->
-<!--               maxlength="20" id="username"-->
-<!--               class="form-control mMarginBottom"-->
-<!--               autocomplete="off"-->
-<!--               required/>-->
-<!--      </div>-->
-<!--    </div>-->
+    <div>
+      <label for="email">Email</label>
+      <input type="text" placeholder="Email" id=email [formControlName]="'email'">
+    </div>
 
-<!--    <div class="form-group">-->
-<!--      <div class="col-sm-12">-->
-<!--        <label for="message" class="control-label required">Comment: </label>-->
-<!--        <textarea formControlName="message"-->
-<!--                  rows="8"-->
-<!--                  cols="80"-->
-<!--                  id="message"-->
-<!--                  class="form-control mMarginBottom"-->
-<!--                  required>-->
-<!--        </textarea>-->
-<!--        <button type="submit" class="btn btn-primary">Submit</button>-->
-<!--      </div>-->
-<!--    </div>-->
+    <div>
+      <label for="password">Password</label>
+      <input type="password" placeholder="password" id="password" [formControlName]="'password'">
+    </div>
 
-<!--  </form>-->
-<!--</div>-->
+    <button class="btn" type="submit">Send</button>
+
+  </form>
+</div>

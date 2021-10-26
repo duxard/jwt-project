@@ -5,12 +5,16 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { TodosComponent } from './components/todos/todos.component';
 import { PlaygroundComponent } from './components/playground/playground.component';
 import { PrivateComponent } from './components/private/private.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'todos', component: TodosComponent },
   { path: 'private', component: PrivateComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegistrationComponent },
   { path: 'pg', component: PlaygroundComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
@@ -26,5 +30,7 @@ export const routingComponents = [
   TodosComponent,
   PageNotFoundComponent,
   PlaygroundComponent,
-  PrivateComponent
+  PrivateComponent,
+  LoginComponent,
+  RegistrationComponent
 ];
