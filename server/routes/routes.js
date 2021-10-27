@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User =  require('../schemas/User.js');
+const jwt = require('jsonwebtoken');
 
 router.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -10,7 +11,7 @@ router.use(function(req, res, next) {
   res.header("Access-Control-Allow-Credentials","true");
   next();
 });
-// TODO: finish up
+
 router.post('/register', (req, res) => {
   const newUser = req.body;
   User.findOne({email: newUser.email}, (err, user) => {
@@ -22,14 +23,12 @@ router.post('/register', (req, res) => {
           if(err) {
             throw new Error(err);
           } else {
-            res.status(200).send(registeredUser);
+            // generate and send JWT
+            let payload = { subject: registeredUser._id };
+            // second argument can be anything. Le it be a 'secretKey' string in our case
+            let token = jwt.sign(payload, 'secretKey');
+            res.status(200).send({ token });
           }
-
-          // let payload = { subject: registeredUser._id };
-          // // second argument can be anything. Le it be
-          // // a string in our case
-          // let token = jwt.sign(payload, 'secretKey');
-          // res.status(200).send({ token });
         });
       } else {
         res.status(400).send('The email already exists');
@@ -37,7 +36,7 @@ router.post('/register', (req, res) => {
     }
   });
 });
-// TODO: finish up
+
 router.post('/login', (req, res) => {
   const userData = req.body;
   User.findOne({email: userData.email}, (err, user) => {
@@ -49,18 +48,15 @@ router.post('/login', (req, res) => {
       } else if(user.password !== userData.password) {
         res.status(401).send('Invalid password');
       } else {
-        res.status(200).send(user);
-        // let payload = { subject: user._id };
-        // // second argument can be anything. Le it be
-        // // a string in our case
-        // let token = jwt.sign(payload, 'secretKey');
-        // res.status(200).send({ token });
+        let payload = { subject: user._id };
+        let token = jwt.sign(payload, 'secretKey', { expiresIn: '1h' });
+        res.status(200).send({ token });
       }
     }
   });
 });
 
-// TODO: move it to real collection in future
+// @todo: move it to real collection in future
 router.get('/special', (req, res) => {
   let specialEvents = [
     {

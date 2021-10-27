@@ -23,7 +23,10 @@ export class RegistrationComponent implements OnInit {
   submitForm(): void {
     const credentials = this.registrationForm.value;
     this.authService.register(credentials).subscribe(
-      data => console.log(data),
+      res => {
+        console.log(res);
+        localStorage.setItem('token', res.token);
+      },
       error => console.log(error)
     );
     this.registrationForm.reset();

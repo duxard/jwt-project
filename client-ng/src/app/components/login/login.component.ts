@@ -23,7 +23,10 @@ export class LoginComponent implements OnInit {
   submitForm(): void {
     const credentials = this.loginForm.value;
     this.authService.login(credentials).subscribe(
-      data => console.log(data),
+      res => {
+        console.log(res);
+        localStorage.setItem('token', res.token);
+      },
       error => console.log(error)
     );
     this.loginForm.reset();

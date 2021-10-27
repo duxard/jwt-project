@@ -3,12 +3,8 @@ const cors = require('cors');
 const port = process.env.PORT || 8000;
 const host = "127.0.0.1";
 const app = express();
-const mongoose = require('mongoose');
 const api = require('./routes/api');
 const bodyParser = require('body-parser');
-
-// @todo: needed for old way of connecting to Mongo
-require('dotenv').config();
 
 // settings import
 const settings = require('./services/settings');
@@ -16,6 +12,8 @@ const database = require('./services/database');
 database.connect(settings.get('database').mongo);
 
 // @todo: old usage
+// const mongoose = require('mongoose');
+// require('dotenv').config();
 // mongoose.connect(
 //   `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@${process.env.MONGODB_CLUSTER}/test?retryWrites=true`,
 //   { useNewUrlParser: true, useUnifiedTopology: true })
