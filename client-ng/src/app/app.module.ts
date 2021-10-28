@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { IconsModule } from './components/icons-library/icons.module';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { TodosComponent } from './components/todos/todos.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { PlaygroundComponent } from './components/playground/playground.component';
@@ -14,6 +14,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { LoginComponent } from './components/login/login.component';
 import { TestNavComponent } from './components/test-nav/test-nav.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TokenInterceptorService } from './services/token-interceptor/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

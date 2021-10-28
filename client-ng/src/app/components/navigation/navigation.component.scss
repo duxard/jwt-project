@@ -7,7 +7,7 @@
 
   nav {
     background-color: $header-bg;
-    padding: 0 10px;
+    padding: 0 toRem(10);
 
     .navbar {
       width: 100%;
@@ -59,7 +59,7 @@
           li:last-child > a {
             padding: toRem(7);
             border: 1px solid $nav-font-color;
-            border-radius: 5px;
+            border-radius: toRem(5);
 
             &:hover {
               border-color: $nav-font-color-hover;
@@ -74,7 +74,7 @@
       cursor: pointer;
       padding: toRem(3) toRem(10);
       border: 1px solid $nav-font-color;
-      border-radius: 5px;
+      border-radius: toRem(5);
       div {
         width: toRem(35);
         height: toRem(4);
@@ -83,20 +83,21 @@
     }
 
     @media screen and (max-width: 576px) {
-      .navbar-burger {
-        display: flex;
-        margin-left: auto;
-        flex-direction: column;
-        div {
-          margin: 4px 0;
+      .navbar {
+        .navbar-burger {
+          display: flex;
+          margin-left: auto;
+          flex-direction: column;
+          div {
+            margin: toRem(4) 0;
+          }
         }
-      }
-      .navbar-section {
-        display: none !important;
+        .navbar-section {
+          display: none;
+        }
       }
     }
   }
-
 }
 
 

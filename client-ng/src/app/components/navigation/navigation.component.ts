@@ -1,16 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent {
 
-  constructor() { }
+  private showMobileVersion = false;
 
-  ngOnInit(): void {
+  toggleMenu(): void {
+    this.showMobileVersion = !this.showMobileVersion;
   }
 
+  get mobileMenu(): string {
+    return this.showMobileVersion ? 'navbar-section-mobile' : '';
+  }
 }
 

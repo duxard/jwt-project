@@ -1,7 +1,7 @@
 <nav>
   <div class="navbar">
     <a href="#" class="navbar-logo"><fa-icon [icon]="['fas', 'anchor']"></fa-icon></a>
-    <div class="navbar-section">
+    <div class="navbar-section" [ngClass]="mobileMenu">
       <ul class="navbar-section-menu">
         <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/home" >Home</a></li>
         <li routerLinkActive="active"><a routerLink="/todos">Todos</a></li>
@@ -14,7 +14,7 @@
         <li routerLinkActive="active"><a routerLink="/register">Sign up</a></li>
       </ul>
     </div>
-    <div class="navbar-burger">
+    <div class="navbar-burger" (click)="toggleMenu()">
       <div></div>
       <div></div>
       <div></div>

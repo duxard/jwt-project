@@ -1,9 +1,9 @@
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { API_LOGIN, API_REGISTER_NEW_USER } from '../constants/api';
-import { APP_CONFIG } from '../constants/appconfig';
-import { Appconfig } from '../models/Appconfig';
+import { API_LOGIN, API_REGISTER_NEW_USER } from '../../constants/api';
+import { APP_CONFIG } from '../../constants/appconfig';
+import { Appconfig } from '../../models/Appconfig';
 import { catchError, timeout } from 'rxjs/operators';
 import { JWToken, RegistrationData } from './auth';
 
