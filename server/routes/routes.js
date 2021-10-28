@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const User =  require('../schemas/User.js');
 const jwt = require('jsonwebtoken');
+const verifyToken = require('../middleware/verifyToken');
+const specialEvents = require('../mocks/data.mocks');
 
 router.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -56,46 +58,8 @@ router.post('/login', (req, res) => {
   });
 });
 
-// @todo: move it to real collection in future
-router.get('/special', (req, res) => {
-  let specialEvents = [
-    {
-      "_id": "1",
-      "name": "Auto Expo Special",
-      "description": "lorem ipsum",
-      "date": "2012-04-23T18:25:43.511Z"
-    },
-    {
-      "_id": "2",
-      "name": "Auto Expo Special",
-      "description": "lorem ipsum",
-      "date": "2012-04-23T18:25:43.511Z"
-    },
-    {
-      "_id": "3",
-      "name": "Auto Expo Special",
-      "description": "lorem ipsum",
-      "date": "2012-04-23T18:25:43.511Z"
-    },
-    {
-      "_id": "4",
-      "name": "Auto Expo Special",
-      "description": "lorem ipsum",
-      "date": "2012-04-23T18:25:43.511Z"
-    },
-    {
-      "_id": "5",
-      "name": "Auto Expo Special",
-      "description": "lorem ipsum",
-      "date": "2012-04-23T18:25:43.511Z"
-    },
-    {
-      "_id": "6",
-      "name": "Auto Expo Special",
-      "description": "lorem ipsum",
-      "date": "2012-04-23T18:25:43.511Z"
-    }
-  ];
+// @todo: move specialEvents array to real collection in future
+router.get('/special', verifyToken, (req, res) => {
   res.json(specialEvents)
 });
 

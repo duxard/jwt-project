@@ -7,12 +7,13 @@ import { PlaygroundComponent } from './components/playground/playground.componen
 import { PrivateComponent } from './components/private/private.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'todos', component: TodosComponent },
-  { path: 'private', component: PrivateComponent },
+  { path: 'private', component: PrivateComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
   { path: 'pg', component: PlaygroundComponent },
@@ -21,7 +22,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }
 

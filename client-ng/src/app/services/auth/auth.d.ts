@@ -3,6 +3,6 @@ export declare interface RegistrationData {
   password: string;
 }
 
-export declare interface JWToken {
+export declare type JWToken = {
   token: string;
-}
+};

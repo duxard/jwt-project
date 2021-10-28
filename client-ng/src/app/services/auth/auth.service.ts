@@ -39,7 +39,11 @@ export class AuthService {
       );
   }
 
-  errorHandler(error: any): Observable<never> {
+  get isLoggedIn(): boolean {
+    return Boolean(localStorage.getItem('token'));
+  }
+
+  private errorHandler(error: any): Observable<never> {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       // Get client-side error

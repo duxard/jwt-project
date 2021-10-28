@@ -10,8 +10,6 @@ import { SpecialEventsService } from './services/special-events.service';
 export class PrivateComponent implements OnInit {
 
   specialEvents: SpecialEvents[] = [];
-  showError = false;
-  loading = true;
 
   constructor(private specialEventsService: SpecialEventsService) { }
 
@@ -22,13 +20,8 @@ export class PrivateComponent implements OnInit {
   getSpecialEventsList(): void {
     this.specialEventsService.fetchSpecialEvent().subscribe(fetchedEvents => {
       this.specialEvents = fetchedEvents;
-      this.showError = false;
-      this.loading = false;
     }, error => {
       console.log(error);
-      this.showError = true;
-      this.loading = false;
     });
   }
-
 }
